@@ -127,3 +127,4 @@
 2026-06-29 20:31:19 - Add RealtimeChannel.d.ts
 2026-06-29 18:36:35 - Add package.js.map
 2026-06-29 14:19:26 - Add align-self.js
+2026-06-29 08:01:11 - Add PostgrestError.ts
