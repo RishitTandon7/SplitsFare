@@ -26,3 +26,4 @@
 2026-07-01 09:45:44 - Add locks.d.ts
 2026-07-01 20:10:14 - Add index.d.ts
 2026-07-01 09:04:00 - Add @supabase_supabase-js.js
+2026-07-01 09:26:51 - Add webauthn.errors.js
