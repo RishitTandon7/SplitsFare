@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SplitFair - Add Expense</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .paper-texture {
+            background-color: #F7F3EA;
+            position: relative;
+        }
+        .paper-texture::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background-image: linear-gradient(135deg, #F7F3EA 25%, transparent 25%), linear-gradient(225deg, #F7F3EA 25%, transparent 25%);
+            background-size: 16px 16px;
+            background-position: 0 0;
+        }
+        .dashed-divider {
+            border-top: 1px dashed #8f9194;
+        }
+        .step-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        input:focus {
+            outline: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#fface9",
+                        "on-primary": "#5d114c",
+                        "primary-container": "#7a2b64",
+                        "on-primary-container": "#ffd7f1",
+                        "secondary": "#e2bfd4",
+                        "on-secondary": "#422b3b",
+                        "secondary-container": "#5b4152",
+                        "on-secondary-container": "#ffd8ee",
+                        "tertiary": "#ffb2bd",
+                        "on-tertiary": "#660026",
+                        "tertiary-container": "#8b1836",
+                        "on-tertiary-container": "#ffdadb",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "background": "#4a2b4d",
+                        "on-background": "#f0deea",
+                        "surface": "#1e111e",
+                        "on-surface": "#f0deea",
+                        "surface-variant": "#51434d",
+                        "on-surface-variant": "#d5c2ce",
+                        "outline": "#9e8d98",
+                        "outline-variant": "#51434d",
+                        "surface-container-lowest": "#180c18",
+                        "surface-container-low": "#261926",
+                        "surface-container": "#2a1d2a",
+                        "surface-container-high": "#352735",
+                        "surface-container-highest": "#403240",
+                        "inverse-surface": "#f0deea",
+                        "inverse-on-surface": "#392e38",
+                        "inverse-primary": "#a63d8d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "receipt-padding": "20px",
+                        "sm": "8px",
+                        "unit": "4px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "amount-sm": ["IBM Plex Mono"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Fraunces"],
+                        "amount-lg": ["IBM Plex Mono"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Fraunces"],
+                        "label-mono": ["IBM Plex Mono"],
+                        "display-lg-mobile": ["Fraunces"]
+                    },
+                    "fontSize": {
+                        "amount-sm": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "700"}],
+                        "amount-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-mono": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col items-center justify-start overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="fixed top-0 z-50 flex justify-between items-center w-full px-md h-16 bg-background">
+<button aria-label="Go back" class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-sm rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">New Expense</h1>
+<div class="w-10"></div> <!-- Spacer for balance -->
+</header>
+<main class="w-full max-w-md px-md pt-24 pb-32 flex flex-col gap-lg flex-grow">
+<!-- Stepper Progress -->
+<div class="flex justify-between items-center px-sm gap-unit">
+<div class="h-1.5 flex-grow rounded-full bg-primary" id="step-dot-1"></div>
+<div class="h-1.5 flex-grow rounded-full bg-surface-variant" id="step-dot-2"></div>
+<div class="h-1.5 flex-grow rounded-full bg-surface-variant" id="step-dot-3"></div>
+<div class="h-1.5 flex-grow rounded-full bg-surface-variant" id="step-dot-4"></div>
+</div>
+<!-- Step 1: Amount Input -->
+<section class="step-transition flex flex-col gap-md opacity-100 translate-x-0" id="step-1">
+<div class="paper-texture p-receipt-padding rounded-lg shadow-sm border border-outline-variant/20">
+<label class="font-label-mono text-label-mono text-on-secondary mb-sm block">ENTER AMOUNT</label>
+<div class="flex items-baseline gap-xs">
+<span class="font-amount-lg text-amount-lg text-on-secondary opacity-60">₹</span>
+<input autofocus="" class="w-full bg-transparent border-none p-0 font-amount-lg text-amount-lg text-on-secondary placeholder:text-on-secondary/30 focus:ring-0" id="amount-input" placeholder="0.00" type="text"/>
+</div>
+<div class="dashed-divider my-md opacity-20"></div>
+<input class="w-full bg-transparent border-none p-0 font-body-md text-body-md text-on-secondary placeholder:text-on-secondary/50 focus:ring-0" placeholder="What was this for?" type="text"/>
+</div>
+</section>
+<!-- Step 2: Who's involved (Initially hidden) -->
+<section class="step-transition hidden flex flex-col gap-md" id="step-2">
+<h2 class="font-headline-md text-headline-md">Who's involved?</h2>
+<div class="flex flex-wrap gap-sm">
+<!-- User Chip -->
+<button class="flex items-center gap-sm bg-primary-container px-md py-sm rounded-full border border-primary/40">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-lg">person</span>
+</div>
+<span class="font-label-mono text-label-mono text-on-primary-container">You</span>
+</button>
+<!-- Contacts -->
+<div class="flex flex-wrap gap-sm" id="contact-chips">
+<button class="flex items-center gap-sm bg-surface-container-low hover:bg-surface-container-high px-md py-sm rounded-full border border-outline-variant transition-colors group">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Rahul portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6MeV4SlLMsluy7_LIoIen9hqM4mcTukRMPYkRmjtwCGpTMrXi9QEDb1LdZH54uAuYyfM6fSV_B73FIV9_dWHR8LkDkmVl6PkS0Crvpq2XaaiCil_uDS_kwyIXWnyetMgvoNOPGpr7Qn6GKlbDfLEo6QZlOHWiU-CRQ0Sr8sOr3FKRzbjXSVKN74RYlrdPNYLrCre0u1lVryAE-C69doDaRm0yCIbLBnzhpILQhy0i5_-24qFCOyERvocbfqUhxWZq1pJ5vwogQZgR"/>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Rahul</span>
+</button>
+<button class="flex items-center gap-sm bg-surface-container-low hover:bg-surface-container-high px-md py-sm rounded-full border border-outline-variant transition-colors group">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Sonia portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu8uwMj94Jlv9XeipmVOmxmLqW8ufQmB3hJhEcRVvm0tviJvacck1YwwU4DB1HZm_aZlqX3GlG8whcQYSXcIwXfc6PVUX_O_9HWhafHm3dCdFo1gRzwzrx8GxM_6_Q_mSh1rvQBXKhXZOm5pOuZkUliAlOWVom9W6I4O3N-xvxFvqP52Bou1wcFGfHnBBnDrQWpankJwhaW2vS29Gz-4Zl30XxhSA-ebIc8N1GRYCe6CDUlgGQEmaJjjQGHe53gyzk48Ae94cJ4tGC"/>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Sonia</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-dashed border-outline flex items-center justify-center text-outline hover:text-primary hover:border-primary transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Step 3: Split Type (Initially hidden) -->
+<section class="step-transition hidden flex flex-col gap-md" id="step-3">
+<h2 class="font-headline-md text-headline-md">Split Method</h2>
+<div class="grid grid-cols-2 gap-sm">
+<button class="flex flex-col gap-sm p-md rounded-xl bg-primary-container border-2 border-primary text-primary text-left">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">balance</span>
+<span class="font-label-mono text-label-mono">Equally</span>
+</button>
+<button class="flex flex-col gap-sm p-md rounded-xl bg-surface-container-low border border-outline-variant text-on-surface-variant text-left hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-mono text-label-mono">Exact Amounts</span>
+</button>
+<button class="flex flex-col gap-sm p-md rounded-xl bg-surface-container-low border border-outline-variant text-on-surface-variant text-left hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">percent</span>
+<span class="font-label-mono text-label-mono">Percentage</span>
+</button>
+<button class="flex flex-col gap-sm p-md rounded-xl bg-surface-container-low border border-outline-variant text-on-surface-variant text-left hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">pie_chart</span>
+<span class="font-label-mono text-label-mono">Shares</span>
+</button>
+</div>
+</section>
+<!-- Step 4: Category Grid (Initially hidden) -->
+<section class="step-transition hidden flex flex-col gap-md" id="step-4">
+<h2 class="font-headline-md text-headline-md">Select Category</h2>
+<div class="grid grid-cols-4 gap-md">
+<button class="flex flex-col items-center gap-unit group">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant group-active:bg-primary-container group-active:text-primary transition-all">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<span class="text-[10px] font-label-mono opacity-60">Food</span>
+</button>
+<button class="flex flex-col items-center gap-unit group">
+<div class="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+</div>
+<span class="text-[10px] font-label-mono text-primary">Groceries</span>
+</button>
+<button class="flex flex-col items-center gap-unit group">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">local_taxi</span>
+</div>
+<span class="text-[10px] font-label-mono opacity-60">Transport</span>
+</button>
+<button class="flex flex-col items-center gap-unit group">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">movie</span>
+</div>
+<span class="text-[10px] font-label-mono opacity-60">Fun</span>
+</button>
+<button class="flex flex-col items-center gap-unit group">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">home</span>
+</div>
+<span class="text-[10px] font-label-mono opacity-60">Rent</span>
+</button>
+<button class="flex flex-col items-center gap-unit group">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<span class="text-[10px] font-label-mono opacity-60">Bills</span>
+</button>
+<button class="flex flex-col items-center gap-unit group">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">medical_services</span>
+</div>
+<span class="text-[10px] font-label-mono opacity-60">Health</span>
+</button>
+<button class="flex flex-col items-center gap-unit group">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">more_horiz</span>
+</div>
+<span class="text-[10px] font-label-mono opacity-60">Others</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Fixed Action Bar -->
+<div class="fixed bottom-0 left-0 w-full p-md bg-gradient-to-t from-background to-transparent pt-lg">
+<div class="max-w-md mx-auto flex gap-md">
+<button class="hidden flex-1 py-lg rounded-xl border border-outline-variant text-on-surface-variant font-bold transition-all active:scale-95" id="prev-btn">
+                Back
+            </button>
+<button class="flex-[2] py-lg rounded-xl bg-primary text-on-primary font-bold transition-all active:scale-95 shadow-lg shadow-primary/10" id="next-btn">
+                Next Step
+            </button>
+</div>
+</div>
+<script>
+        const steps = [
+            document.getElementById('step-1'),
+            document.getElementById('step-2'),
+            document.getElementById('step-3'),
+            document.getElementById('step-4')
+        ];
+        const dots = [
+            document.getElementById('step-dot-1'),
+            document.getElementById('step-dot-2'),
+            document.getElementById('step-dot-3'),
+            document.getElementById('step-dot-4')
+        ];
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        let currentStep = 0;
+
+        function updateUI() {
+            steps.forEach((step, index) => {
+                if (index === currentStep) {
+                    step.classList.remove('hidden');
+                    setTimeout(() => {
+                        step.classList.add('opacity-100', 'translate-x-0');
+                    }, 50);
+                } else {
+                    step.classList.add('hidden');
+                    step.classList.remove('opacity-100', 'translate-x-0');
+                }
+            });
+
+            dots.forEach((dot, index) => {
+                if (index <= currentStep) {
+                    dot.classList.replace('bg-surface-variant', 'bg-primary');
+                } else {
+                    dot.classList.replace('bg-primary', 'bg-surface-variant');
+                }
+            });
+
+            if (currentStep === 0) {
+                prevBtn.classList.add('hidden');
+            } else {
+                prevBtn.classList.remove('hidden');
+            }
+
+            if (currentStep === steps.length - 1) {
+                nextBtn.innerText = 'Save Expense';
+                nextBtn.classList.replace('bg-primary', 'bg-tertiary');
+                nextBtn.classList.replace('text-on-primary', 'text-on-tertiary');
+            } else {
+                nextBtn.innerText = 'Next Step';
+                nextBtn.classList.replace('bg-tertiary', 'bg-primary');
+                nextBtn.classList.replace('text-on-tertiary', 'text-on-primary');
+            }
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                updateUI();
+            } else {
+                nextBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span>';
+                setTimeout(() => {
+                    alert('Expense split successfully!');
+                    location.reload();
+                }, 1000);
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep--;
+                updateUI();
+            }
+        });
+
+        const amountInput = document.getElementById('amount-input');
+        amountInput.addEventListener('input', (e) => {
+            let val = e.target.value.replace(/[^0-9.]/g, '');
+            if (val.split('.').length > 2) val = val.substring(0, val.lastIndexOf('.'));
+            e.target.value = val;
+        });
+    </script>
+</body></html>
