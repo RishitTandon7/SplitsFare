@@ -1,0 +1,259 @@
+<!DOCTYPE html><html lang="en" class="dark" style=""><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#151215",
+                    "tertiary-fixed": "#ffd9de",
+                    "surface-container-low": "#1e1b1d",
+                    "on-secondary-fixed-variant": "#484740",
+                    "inverse-on-surface": "#332f32",
+                    "surface-bright": "#3c383b",
+                    "secondary": "#c9c6be",
+                    "primary-fixed": "#ffd6fe",
+                    "on-background": "#e8e0e4",
+                    "on-primary-fixed-variant": "#5c3b5e",
+                    "tertiary-fixed-dim": "#ffb2bf",
+                    "on-surface-variant": "#cfc3cc",
+                    "on-tertiary-fixed-variant": "#90003b",
+                    "on-tertiary-container": "#ff6f92",
+                    "surface-container-lowest": "#100d10",
+                    "error-container": "#93000a",
+                    "secondary-fixed-dim": "#c9c6be",
+                    "primary-fixed-dim": "#e4b9e3",
+                    "on-secondary": "#31302b",
+                    "surface-variant": "#383436",
+                    "on-primary-fixed": "#2c1030",
+                    "outline": "#988e96",
+                    "surface-container-highest": "#383436",
+                    "secondary-container": "#484740",
+                    "tertiary": "#ffb2bf",
+                    "on-error": "#690005",
+                    "inverse-surface": "#e8e0e4",
+                    "on-secondary-container": "#b8b5ad",
+                    "surface-container-high": "#2d292c",
+                    "on-primary": "#442547",
+                    "surface-tint": "#e4b9e3",
+                    "outline-variant": "#4d444c",
+                    "on-tertiary": "#660028",
+                    "primary-container": "#4a2b4d",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#3f0016",
+                    "inverse-primary": "#755377",
+                    "surface-dim": "#151215",
+                    "error": "#ffb4ab",
+                    "secondary-fixed": "#e6e2d9",
+                    "on-secondary-fixed": "#1c1c16",
+                    "background": "#151215",
+                    "surface-container": "#221f21",
+                    "primary": "#e4b9e3",
+                    "on-surface": "#e8e0e4",
+                    "tertiary-container": "#71002d",
+                    "on-primary-container": "#ba92bb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px",
+                    "receipt-width": "360px"
+            },
+            "fontFamily": {
+                    "label-caps": ["IBM Plex Mono"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Fraunces"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Fraunces"],
+                    "data-md": ["IBM Plex Mono"],
+                    "data-lg": ["IBM Plex Mono"],
+                    "headline-lg-mobile": ["Fraunces"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "data-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "data-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    }catch(_e){}</script><meta charset="utf-8"></head><body class="font-body-md text-on-surface">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky bg-background dark:bg-background border-b border-dashed border-outline-variant flex items-center justify-between px-gutter py-unit z-40 h-16">
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-container-low transition-colors active:scale-95 duration-150 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">menu</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-tertiary dark:text-tertiary-fixed-dim tracking-tight font-headline-md text-headline-md">SplitFair</h1>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-full border-2 border-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stylish, close-up portrait of a chic person with soft lighting and berry-toned makeup, reflecting a high-end fashion editorial aesthetic. The background is a soft, warm cream color that complements the skin tones and professional photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIIxeLhVlhocvYvzy7kATKIucvahYZTi6JrShh74vSTSZSZwBS5lDAp5Kuylc7F_DVD-Sup9N7f0KxI2qq1vkXAoqXvbFETtHZUofdTwFBqwZ5bja0LzC2AZAr2e9rTIjEO7scw0FWwz2ZnzVLb0O8s9g4dFluQfIKYv3mG1LOpMewhB5oy-59AqEX8VKXWl6Trsfbx1pTfa9ln3YbXPigDmd-UMrYYphbn1YFkNWWElZqskUwlOmeGZDGNhWOolgcd6PGKSEqcIkz">
+</div>
+</div>
+</header>
+<main class="min-h-screen pb-32 flex flex-col items-center">
+<!-- Search & Summary Section -->
+<section class="w-full max-w-receipt-width px-margin-mobile mt-8">
+<!-- Search Bar -->
+<div class="relative w-full mb-6 group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container border-b border-outline-variant focus:border-primary transition-all outline-none font-data-md text-data-md placeholder:text-outline-variant" placeholder="Find a friend..." type="text">
+</div>
+<!-- Net Balance Summary -->
+<div class="paper-texture p-6 mb-8 text-on-primary shadow-xl rounded-t-lg relative">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-primary-container/60">Owed to Me 🎀</span>
+<span class="font-data-md text-data-md text-primary-container">JUL-24</span>
+</div>
+<div class="border-b border-dashed border-primary-container/20 my-4"></div>
+<div class="flex flex-col items-center py-2">
+<h2 class="font-label-caps text-label-caps text-primary-container opacity-70">Total Princess Credit ✨</h2>
+<p class="font-data-lg text-[32px] text-on-tertiary-container font-bold leading-tight">$428.50</p>
+</div>
+<!-- Perforated Bottom Edge for Summary Card -->
+<div class="absolute -bottom-1 left-0 w-full h-2 bg-background receipt-perforation"></div>
+</div>
+</section>
+<!-- Friends List -->
+<div class="w-full max-w-receipt-width px-margin-mobile space-y-6">
+<!-- Friend Receipt 1 -->
+<div class="paper-texture p-6 relative shadow-sm group hover:scale-[1.02] transition-transform duration-300">
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary font-bold text-lg">CP</div>
+<div>
+<h3 class="font-headline-md text-body-md font-bold text-primary-container">Chloe Park</h3>
+<span class="font-label-caps text-[10px] text-outline">STREAK: 12 DAYS</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-[10px] text-on-tertiary-container">Owes Bestie 💖</p>
+<p class="font-data-lg text-on-tertiary-container text-rose-600">$124.00</p>
+</div>
+</div>
+<div class="border-t border-dashed border-primary-container/20 pt-3">
+<p class="font-body-sm text-[12px] italic text-primary-container/60 text-center">Brunch vibes at 'The Berry' 🥂</p>
+</div>
+<div class="absolute -bottom-1 left-0 w-full h-2 bg-background receipt-perforation"></div>
+</div>
+<!-- Friend Receipt 2 -->
+<div class="paper-texture p-6 relative shadow-sm group hover:scale-[1.02] transition-transform duration-300">
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up avatar of a chic woman with modern glasses and minimal jewelry, soft morning light, high-end editorial photography style, warm tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqrJPnFAqHMmRxq9tLsXr20Fcuft_JAyeDQXp2bnIJqM_OSKXaZaB8YwHoJ8euK3C66ha9raXpSyDngWGRD4VPFxa3R0QMzRDO1p6nl8e83BnyIiyIoxPguDFjdVTeg-FUiKGOHtkVMXNs8YEeOKB6dEdoLTfxu_5gqEZzhvBUD5pe44moVU7CONtx09wotOPqPqZ84TkwTITgPnxovxqoKTjug0gWYZRtDjmOUJ1xln2jD2k_fX7u8ELNnTT3PwpFJAxcp97-D1Uw">
+</div>
+<div>
+<h3 class="font-headline-md text-body-md font-bold text-primary-container">Sarah Jenkins</h3>
+<span class="font-label-caps text-[10px] text-outline">STREAK: 0 DAYS</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-[10px] text-primary-container/60">I Owe Sis 💸</p>
+<p class="font-data-lg text-primary-container">$45.20</p>
+</div>
+</div>
+<div class="border-t border-dashed border-primary-container/20 pt-3 flex justify-center">
+<button class="bg-on-tertiary-container text-on-primary-fixed px-4 py-1 text-label-caps font-bold transition-all hover:bg-tertiary active:scale-95">Pay Them Back ✨</button>
+</div>
+<div class="absolute -bottom-1 left-0 w-full h-2 bg-background receipt-perforation"></div>
+</div>
+<!-- Friend Receipt 3 -->
+<div class="paper-texture p-6 relative shadow-sm group hover:scale-[1.02] transition-transform duration-300">
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-primary font-bold text-lg">MJ</div>
+<div>
+<h3 class="font-headline-md text-body-md font-bold text-primary-container">Mia Jung</h3>
+<span class="font-label-caps text-[10px] text-outline">SETTLED 2H AGO</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-[10px] text-primary-container/60">All Paid Up! 🦄</p>
+<p class="font-data-lg text-outline">$0.00</p>
+</div>
+</div>
+<div class="border-t border-dashed border-primary-container/20 pt-3">
+<p class="font-body-sm text-[12px] text-primary-container/40 text-center uppercase tracking-tighter">Ledger Closed 💅</p>
+</div>
+<div class="absolute -bottom-1 left-0 w-full h-2 bg-background receipt-perforation"></div>
+</div>
+<!-- Friend Receipt 4 -->
+<div class="paper-texture p-6 relative shadow-sm group hover:scale-[1.02] transition-transform duration-300">
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a fashionable friend with a bright smile, colorful knit sweater, warm autumn lighting, studio photography, vibrant yet soft colors consistent with the SplitFair brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUQwp8HRg0nFqGF-nbvkjPmPTUHaMvjPSC4HR7YTG4YLbCG1plJVaEkY9e2iEEhRFugIicYrkbDClrrMvToXvN1o_5wUWk0Qi2Xnqiu_ZddeUQ6ghYvW0tYbRVJad5cm_sNzfCglfKcUq_yEruR4gsjvwDz_ikNAFDpLkIHd8dbtknt8Pyn8G4tiKVHS_Urof9bS8GHU9kYifhc60oC7QPPCj_BN81j03F6g9CEUJMPl3waNZ6JivM5qZmOPz95PeJ9uf93hKL2XdW">
+</div>
+<div>
+<h3 class="font-headline-md text-body-md font-bold text-primary-container">Elena Rossi</h3>
+<span class="font-label-caps text-[10px] text-outline">STREAK: 5 DAYS</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-[10px] text-on-tertiary-container">Owes Bestie 💖</p>
+<p class="font-data-lg text-on-tertiary-container text-rose-600">$304.50</p>
+</div>
+</div>
+<div class="border-t border-dashed border-primary-container/20 pt-3">
+<p class="font-body-sm text-[12px] italic text-primary-container/60 text-center">Girls' Trip! ✈️</p>
+</div>
+<div class="absolute -bottom-1 left-0 w-full h-2 bg-background receipt-perforation"></div>
+</div>
+</div>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-on-tertiary-container text-on-primary rounded-full shadow-2xl flex items-center justify-center active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined text-[32px]">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 pb-lg bg-surface-container-low dark:bg-surface-container-low border-t border-dashed border-outline-variant flex justify-around items-center px-lg py-sm h-20 active-tab-glow">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-container hover:text-primary transition-all active:translate-y-0.5 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-mono text-label-mono">Groups</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary dark:text-tertiary-fixed-dim font-bold hover:text-primary transition-all active:translate-y-0.5 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-mono text-label-mono">Girlypops</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-container hover:text-primary transition-all active:translate-y-0.5 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-mono text-label-mono">Activity</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-container hover:text-primary transition-all active:translate-y-0.5 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="manage_accounts" data-original-icon="manage_accounts">circle</span>
+<span class="font-label-mono text-label-mono">Account</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for receipt "tear" feel
+        document.querySelectorAll('.paper-texture').forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.add('scale-[0.98]');
+                setTimeout(() => this.classList.remove('scale-[0.98]'), 100);
+            });
+        });
+
+        // Search highlight logic
+        const searchInput = document.querySelector('input');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-105');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-105');
+        });
+    </script>
+
+</body></html>
