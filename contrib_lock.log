@@ -342,3 +342,4 @@
 2026-07-01 11:03:41 - Add builder.js.map
 2026-07-01 11:29:04 - Add read-input-source-map-file.ts
 2026-07-01 19:45:11 - Add sourcemap-codec.mjs
+2026-07-01 10:33:25 - Add inheritsComments.js
