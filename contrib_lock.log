@@ -304,3 +304,4 @@
 2026-07-01 16:17:26 - Add types.ts
 2026-07-01 15:46:59 - Add nonIterableSpread.js
 2026-07-01 16:10:17 - Add missing-plugin-helper.js.map
+2026-07-01 13:40:16 - Add socketAdapter.js
