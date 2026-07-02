@@ -436,3 +436,4 @@
 2026-07-02 09:01:37 - Add rewrite-live-references.js
 2026-07-02 19:59:33 - Add inheritInnerComments.js
 2026-07-02 14:27:37 - Add GoTrueClient.js.map
+2026-07-02 19:21:14 - Add package.json
