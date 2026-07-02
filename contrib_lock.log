@@ -384,3 +384,4 @@
 2026-07-02 12:52:44 - Add channelAdapter.js
 2026-07-02 20:17:53 - Add classStaticPrivateFieldDestructureSet.js
 2026-07-02 16:39:28 - Add classExtractFieldDescriptor.js.map
+2026-07-02 10:20:24 - Add normalizeChannelError.d.ts.map
