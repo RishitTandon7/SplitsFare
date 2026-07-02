@@ -469,3 +469,4 @@
 2026-07-02 14:27:05 - Add feature-flags.ts
 2026-07-02 11:47:16 - Add classPrivateFieldLooseKey.js
 2026-07-02 18:06:27 - Add strip-filename.d.cts.map
+2026-07-02 08:10:59 - Add isBlockScoped.js.map
