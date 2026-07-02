@@ -444,3 +444,4 @@
 2026-07-02 13:00:41 - Add wrapNativeSuper.js
 2026-07-02 11:18:04 - Add arrayWithoutHoles.js.map
 2026-07-02 12:37:11 - Add ethereum.d.ts
+2026-07-02 19:56:36 - Add normalizeChannelError.js
