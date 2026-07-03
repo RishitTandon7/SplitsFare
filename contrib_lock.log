@@ -505,3 +505,4 @@
 2026-07-03 18:16:03 - Add ensureBlock.js
 2026-07-03 10:51:14 - Add cors.d.mts
 2026-07-03 15:41:08 - Add isNodesEquivalent.js
+2026-07-03 15:13:32 - Add remapping.umd.js
