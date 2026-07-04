@@ -642,3 +642,4 @@
 2026-07-04 14:42:03 - Add .npmignore
 2026-07-04 19:31:54 - Add sourcemap-segment.d.mts.map
 2026-07-04 20:04:23 - Add resolve
+2026-07-04 17:51:58 - Add dispose.js
