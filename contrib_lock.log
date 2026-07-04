@@ -570,3 +570,4 @@
 2026-07-04 08:49:27 - Add avif.js
 2026-07-04 14:46:17 - Add virtual-types.js
 2026-07-04 19:22:09 - Add getPrototypeOf.js
+2026-07-04 18:03:46 - Add serializer.d.ts
