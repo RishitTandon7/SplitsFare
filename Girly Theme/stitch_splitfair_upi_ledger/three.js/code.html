@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_10 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_10" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_10');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  
+const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+container.appendChild(renderer.domElement);
+
+// Heart Shape Helper
+function createHeartShape() {
+    const shape = new THREE.Shape();
+    shape.moveTo(0, 0);
+    shape.bezierCurveTo(0, -0.3, -0.6, -0.3, -0.6, 0);
+    shape.bezierCurveTo(-0.6, 0.3, 0, 0.7, 0, 1);
+    shape.bezierCurveTo(0, 0.7, 0.6, 0.3, 0.6, 0);
+    shape.bezierCurveTo(0.6, -0.3, 0, -0.3, 0, 0);
+    return shape;
+}
+
+const heartGeom = new THREE.ShapeGeometry(createHeartShape());
+const colors = [0xD81B60, 0xF48FB1, 0xFFC1E3, 0x4A2B4D];
+
+const hearts = [];
+const heartCount = 40;
+
+for (let i = 0; i < heartCount; i++) {
+    const material = new THREE.MeshPhongMaterial({
+        color: colors[Math.floor(Math.random() * colors.length)],
+        side: THREE.DoubleSide,
+        transparent: true,
+        opacity: 0.9
+    });
+    const heart = new THREE.Mesh(heartGeom, material);
+    
+    heart.position.set(
+        (Math.random() - 0.5) * 10,
+        (Math.random() - 0.5) * 10,
+        (Math.random() - 0.5) * 5
+    );
+    heart.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
+    heart.scale.setScalar(Math.random() * 0.5 + 0.2);
+    
+    heart.userData = {
+        velocity: new THREE.Vector3((Math.random() - 0.5) * 0.05, (Math.random() - 0.5) * 0.05, (Math.random() - 0.5) * 0.05),
+        rotSpeed: new THREE.Vector3(Math.random() * 0.02, Math.random() * 0.02, Math.random() * 0.02)
+    };
+    
+    scene.add(heart);
+    hearts.push(heart);
+}
+
+const light = new THREE.PointLight(0xffffff, 1, 100);
+light.position.set(0, 0, 10);
+scene.add(light);
+scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+
+camera.position.z = 5;
+
+let startTime = Date.now();
+
+function animate() {
+    const elapsed = (Date.now() - startTime) / 1000;
+    
+    hearts.forEach(heart => {
+        heart.position.add(heart.userData.velocity);
+        heart.rotation.x += heart.userData.rotSpeed.x;
+        heart.rotation.y += heart.userData.rotSpeed.y;
+        
+        // Wrap around
+        if (Math.abs(heart.position.x) > 6) heart.position.x *= -0.9;
+        if (Math.abs(heart.position.y) > 6) heart.position.y *= -0.9;
+    });
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+});
+
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_10 -->
+</body>
+</html>
