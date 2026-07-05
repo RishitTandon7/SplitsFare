@@ -727,3 +727,4 @@
 2026-07-05 20:54:02 - Add index.ts
 2026-07-05 17:29:53 - Add build-source-map-tree.d.mts
 2026-07-05 11:13:56 - Add getOuterBindingIdentifiers.js.map
+2026-07-05 18:30:30 - Add types.d.mts
