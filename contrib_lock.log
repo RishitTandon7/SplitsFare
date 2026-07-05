@@ -695,3 +695,4 @@
 2026-07-05 08:54:35 - Add router.umd.min.js.map
 2026-07-05 12:52:55 - Add caching.js.map
 2026-07-05 09:40:07 - Add classStaticPrivateFieldSpecSet.js
+2026-07-05 14:46:03 - Add AuthClient.ts
