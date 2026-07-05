@@ -697,3 +697,4 @@
 2026-07-05 09:40:07 - Add classStaticPrivateFieldSpecSet.js
 2026-07-05 14:46:03 - Add AuthClient.ts
 2026-07-05 18:27:21 - Add webauthn.d.ts
+2026-07-05 14:08:00 - Add locks.d.ts.map
