@@ -823,3 +823,4 @@
 2026-07-06 12:14:20 - Add tsRewriteRelativeImportExtensions.js
 2026-07-06 17:31:46 - Add CHANGELOG.md
 2026-07-06 17:40:07 - Add package.json
+2026-07-06 14:09:56 - Add constants.d.ts
