@@ -947,3 +947,4 @@
 2026-07-08 13:04:20 - Add index.js
 2026-07-08 10:25:25 - Add index.d.ts
 2026-07-08 14:13:01 - Add remapping.ts
+2026-07-08 17:18:09 - Add sucrase-node.cmd
