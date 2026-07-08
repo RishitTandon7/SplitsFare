@@ -994,3 +994,4 @@
 2026-07-08 10:14:23 - Add index.ts
 2026-07-08 14:10:21 - Add regeneratorDefine.js
 2026-07-08 17:32:18 - Add tsconfig.json
+2026-07-08 18:16:32 - Add isReferenced.js
