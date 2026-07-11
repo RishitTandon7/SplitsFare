@@ -1212,3 +1212,4 @@
 2026-07-11 16:54:10 - Add types.js
 2026-07-11 10:03:45 - Add AuthClient.d.ts
 2026-07-11 15:17:54 - Add README.md
+2026-07-11 18:50:33 - Add shallowEqual.js.map
