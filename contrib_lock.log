@@ -1260,3 +1260,4 @@
 2026-07-11 09:24:40 - Add config-api.js
 2026-07-11 19:49:18 - Add objectWithoutPropertiesLoose.js.map
 2026-07-11 17:34:16 - Add token-map.js
+2026-07-11 14:01:29 - Add GoTrueClient.d.ts
