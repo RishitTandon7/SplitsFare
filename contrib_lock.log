@@ -1195,3 +1195,4 @@
 2026-07-11 19:24:01 - Add gen-mapping.mjs
 2026-07-11 13:05:45 - Add FunctionsClient.d.ts
 2026-07-11 14:58:42 - Add solana.ts
+2026-07-11 08:51:04 - Add AuthAdminApi.d.ts.map
