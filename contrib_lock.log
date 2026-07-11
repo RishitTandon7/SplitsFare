@@ -1261,3 +1261,4 @@
 2026-07-11 19:49:18 - Add objectWithoutPropertiesLoose.js.map
 2026-07-11 17:34:16 - Add token-map.js
 2026-07-11 14:01:29 - Add GoTrueClient.d.ts
+2026-07-11 17:11:01 - Add deprecated-aliases.js
