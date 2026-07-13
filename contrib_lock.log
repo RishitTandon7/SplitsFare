@@ -1461,3 +1461,4 @@
 2026-07-13 14:52:05 - Add formatters.js
 2026-07-13 12:50:35 - Add index.js
 2026-07-13 13:31:04 - Add removeTypeDuplicates.js
+2026-07-13 09:56:37 - Add webauthn.errors.d.ts.map
