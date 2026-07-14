@@ -1492,3 +1492,4 @@
 2026-07-14 12:40:30 - Add index.d.ts.map
 2026-07-14 08:19:43 - Add overlapping-plugins.json
 2026-07-14 12:44:06 - Add dynamic-import.js.map
+2026-07-14 20:17:29 - Add sucrase.cmd
