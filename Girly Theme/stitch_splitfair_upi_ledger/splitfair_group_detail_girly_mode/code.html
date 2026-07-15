@@ -1,0 +1,269 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Fraunces:wght@600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .receipt-jagged {
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'%3E%3Cpath d='M0 8l4-4 4 4 4-4 4 4V0H0z' fill='%23000'/%3E%3C/svg%3E");
+            mask-repeat: repeat-x;
+            mask-position: bottom;
+            padding-bottom: 12px;
+        }
+        .ledger-line {
+            background-image: linear-gradient(to bottom, #83737b 50%, transparent 50%);
+            background-size: 1px 8px;
+            background-repeat: repeat-y;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#f8daee",
+                        "on-primary": "#4c203f",
+                        "primary-container": "#663756",
+                        "on-primary-container": "#ffd8ee",
+                        "secondary": "#d8c1cc",
+                        "on-secondary": "#3c2c35",
+                        "secondary-container": "#53424c",
+                        "on-secondary-container": "#f5ddef",
+                        "tertiary": "#f3ba9e",
+                        "on-tertiary": "#4a2814",
+                        "tertiary-container": "#653e28",
+                        "on-tertiary-container": "#ffdccb",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "background": "#1e1a1d",
+                        "on-background": "#ece0e4",
+                        "surface": "#151215",
+                        "on-surface": "#ece0e4",
+                        "surface-variant": "#4e444b",
+                        "on-surface-variant": "#d1c3cb",
+                        "outline": "#9a8d95",
+                        "outline-variant": "#4e444b",
+                        "surface-container-lowest": "#100d10",
+                        "surface-container-low": "#1e1b1d",
+                        "surface-container": "#221f22",
+                        "surface-container-high": "#2d292c",
+                        "surface-container-highest": "#383437",
+                        "surface-bright": "#3c383b",
+                        "surface-dim": "#151215",
+                        "inverse-surface": "#342f33",
+                        "inverse-on-surface": "#f8eef2",
+                        "inverse-primary": "#825270",
+                        "warm-paper": "#FAF1F4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "receipt-padding": "20px",
+                        "sm": "8px",
+                        "unit": "4px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "amount-sm": ["IBM Plex Mono"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Fraunces"],
+                        "amount-lg": ["IBM Plex Mono"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Fraunces"],
+                        "label-mono": ["IBM Plex Mono"],
+                        "display-lg-mobile": ["Fraunces"]
+                    },
+                    "fontSize": {
+                        "amount-sm": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "700"}],
+                        "amount-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-mono": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary/30">
+<!-- Top AppBar -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md flex justify-between items-center px-md h-16">
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-sm rounded-full">arrow_back</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary">Besties Trip 💖</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-primary p-sm rounded-full hover:bg-surface-container-high transition-colors">group_add</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-primary/20">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAYaeIHBNTlYof2G_o1-SuaEHSDv9qWblP98yuwOix8ibqpHWlIQk9YiTsgZBBp3w380o2i0pyqJH9zGqvvHk6QbEwHDszFDos6NJn-egJilFl6ewdgo9_lyx7M8dAM6qGVEuq0VUeWK-3gIBicQ5y0Yp8iMHN3XZhEV-W6KearCwG8A7KtAtzU_qEdMrRmo5HnRULdlslJHHwP0iu5uW5stEAACNrzd_nWDRhX3Zw5IuI6wh0zsvMBvrbSKgoXa_Re0Bo5wMWMDDo">
+</div>
+</div>
+</header>
+<main class="pt-20 pb-32 px-md max-w-lg mx-auto">
+<!-- Hero: Simplified Balances Panel -->
+<section class="mb-lg">
+<div class="bg-warm-paper text-primary-container p-receipt-padding rounded-lg shadow-xl receipt-jagged border-l-4 border-primary">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-label-mono text-label-mono uppercase tracking-wider text-primary-container/70">Who Owes What? 🦄</span>
+<span class="material-symbols-outlined text-primary-container">account_balance_wallet</span>
+</div>
+<h2 class="font-headline-md text-headline-md mb-xs text-primary-container">Total group debt simplified to 2 payments.</h2>
+<div class="mt-md border-t border-dashed border-primary/20 pt-sm">
+<div class="flex justify-between items-center py-unit">
+<span class="font-body-md text-primary-container">Ankit owes Priya</span>
+<span class="font-amount-sm text-amount-sm text-primary-container">₹1,420.00</span>
+</div>
+<div class="flex justify-between items-center py-unit">
+<span class="font-body-md text-primary-container">Siddharth owes Priya</span>
+<span class="font-amount-sm text-amount-sm text-primary-container">₹850.00</span>
+</div>
+</div>
+<div class="mt-md flex justify-end">
+<button class="bg-primary-container text-on-primary-container font-bold px-lg py-sm rounded-lg hover:scale-[0.98] transition-transform active:scale-95 text-sm uppercase tracking-widest">Paying Them Back ✨</button>
+</div>
+</div>
+</section>
+<!-- Activity Feed Header -->
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-md text-headline-md text-on-background">The Tea Ledger ☕</h3>
+<button class="material-symbols-outlined text-outline">filter_list</button>
+</div>
+<!-- Activity Feed (Receipt Strips) -->
+<div class="relative space-y-md">
+<!-- Vertical Ledger Margin Line -->
+<div class="absolute left-6 top-4 bottom-4 w-[1px] ledger-line z-0 opacity-40"></div>
+<!-- Expense Card 1 -->
+<div class="relative z-10 flex gap-md pl-12 group">
+<div class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 bg-background border-2 border-primary rounded-full"></div>
+<div class="w-full bg-warm-paper text-primary-container p-md rounded-lg receipt-jagged hover:rotate-1 transition-transform cursor-pointer shadow-md">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-mono text-xs text-primary-container/60 uppercase">Oct 14, 2023</p>
+<h4 class="font-body-lg font-bold">Rafting &amp; Gear Rental</h4>
+<p class="text-sm text-primary-container/80">Paid by <span class="font-semibold">Siddharth</span></p>
+</div>
+<p class="font-amount-lg text-amount-lg text-primary-container">₹4,200</p>
+</div>
+<div class="mt-sm border-t border-dashed border-primary/10 pt-xs flex gap-xs">
+<span class="bg-primary/10 px-sm py-unit rounded-lg text-[10px] font-bold uppercase">Adventure</span>
+<span class="bg-primary/10 px-sm py-unit rounded-lg text-[10px] font-bold uppercase">Shared by 4</span>
+</div>
+</div>
+</div>
+<!-- Expense Card 2 -->
+<div class="relative z-10 flex gap-md pl-12 group">
+<div class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 bg-background border-2 border-outline-variant rounded-full"></div>
+<div class="w-full bg-warm-paper text-primary-container p-md rounded-lg receipt-jagged hover:-rotate-1 transition-transform cursor-pointer shadow-md">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-mono text-xs text-primary-container/60 uppercase">Oct 13, 2023</p>
+<h4 class="font-body-lg font-bold">Johnson's Cafe Dinner</h4>
+<p class="text-sm text-primary-container/80">Paid by <span class="font-semibold">Ankit</span></p>
+</div>
+<p class="font-amount-lg text-amount-lg text-primary-container">₹2,850</p>
+</div>
+<div class="mt-sm border-t border-dashed border-primary/10 pt-xs flex gap-xs">
+<span class="bg-primary/10 px-sm py-unit rounded-lg text-[10px] font-bold uppercase">Food</span>
+</div>
+</div>
+</div>
+<!-- Expense Card 3 -->
+<div class="relative z-10 flex gap-md pl-12 group">
+<div class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 bg-background border-2 border-outline-variant rounded-full"></div>
+<div class="w-full bg-warm-paper text-primary-container p-md rounded-lg receipt-jagged hover:rotate-1 transition-transform cursor-pointer shadow-md">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-mono text-xs text-primary-container/60 uppercase">Oct 12, 2023</p>
+<h4 class="font-body-lg font-bold">Cab to Solang Valley</h4>
+<p class="text-sm text-primary-container/80">Paid by <span class="font-semibold">Priya</span></p>
+</div>
+<p class="font-amount-lg text-amount-lg text-primary-container">₹1,800</p>
+</div>
+<div class="mt-sm border-t border-dashed border-primary/10 pt-xs flex gap-xs">
+<span class="bg-primary/10 px-sm py-unit rounded-lg text-[10px] font-bold uppercase">Travel</span>
+</div>
+</div>
+</div>
+<!-- Expense Card 4 -->
+<div class="relative z-10 flex gap-md pl-12 group">
+<div class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 bg-background border-2 border-outline-variant rounded-full"></div>
+<div class="w-full bg-warm-paper text-primary-container p-md rounded-lg receipt-jagged hover:-rotate-1 transition-transform cursor-pointer shadow-md">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-mono text-xs text-primary-container/60 uppercase">Oct 12, 2023</p>
+<h4 class="font-body-lg font-bold">Mall Road Snacks</h4>
+<p class="text-sm text-primary-container/80">Paid by <span class="font-semibold">You</span></p>
+</div>
+<p class="font-amount-lg text-amount-lg text-primary-container">₹640</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB: Add Expense -->
+<button class="fixed bottom-28 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center z-50 hover:scale-110 active:scale-90 transition-all border-4 border-background">
+<span class="material-symbols-outlined text-3xl font-bold">add</span>
+</button>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-md pb-lg pt-sm bg-surface-container-lowest z-[60] border-t border-dashed border-outline-variant">
+<a class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-xl px-sm py-unit translate-y-[-2px] transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-mono text-[10px] uppercase mt-1">Groups</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-opacity" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-mono text-[10px] uppercase mt-1">Girlypops</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-opacity" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-mono text-[10px] uppercase mt-1">Activity</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-opacity" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-mono text-[10px] uppercase mt-1">Account</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for receipt tilt effect
+        document.querySelectorAll('.receipt-jagged').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const xc = rect.width / 2;
+                const yc = rect.height / 2;
+                const dx = x - xc;
+                const dy = y - yc;
+                card.style.transform = `perspective(500px) rotateX(${dy / -20}deg) rotateY(${dx / 20}deg) scale(1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    </script>
+
+
+
+
+</body></html>
