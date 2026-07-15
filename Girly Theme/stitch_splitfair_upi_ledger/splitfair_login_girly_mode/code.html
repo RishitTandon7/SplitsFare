@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SplitFair - Settle up in a snap</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@100..900&amp;family=IBM+Plex+Mono:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .paper-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            opacity: 0.05;
+        }
+
+        .ledger-line {
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(143, 145, 148, 0.1) 31px, rgba(143, 145, 148, 0.1) 32px);
+            background-size: 100% 32px;
+        }
+
+        .perforated-edge {
+            mask-image: url("data:image/svg+xml,%3Csvg width='20' height='10' viewBox='0 0 20 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10L5 0L10 10L15 0L20 10H0Z' fill='black'/%3E%3C/svg%3E");
+            mask-repeat: repeat-x;
+            mask-position: bottom;
+            mask-size: 20px 10px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#fface9",
+                        "on-primary": "#4e1544",
+                        "primary-container": "#692d5c",
+                        "on-primary-container": "#ffd7f1",
+                        "secondary": "#dfc0d2",
+                        "on-secondary": "#412b3a",
+                        "secondary-container": "#594151",
+                        "on-secondary-container": "#fcdbe9",
+                        "tertiary": "#f3bb9e",
+                        "on-tertiary": "#4b2713",
+                        "tertiary-container": "#653d28",
+                        "on-tertiary-container": "#ffdccb",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "background": "#1e1a1d",
+                        "on-background": "#ece0e4",
+                        "surface": "#1e1a1d",
+                        "on-surface": "#ece0e4",
+                        "surface-variant": "#4f444b",
+                        "on-surface-variant": "#d3c2cb",
+                        "outline": "#9c8d95",
+                        "outline-variant": "#4f444b",
+                        "inverse-surface": "#ece0e4",
+                        "inverse-on-surface": "#342f32",
+                        "inverse-primary": "#864a75",
+                        "surface-dim": "#1e1a1d",
+                        "surface-bright": "#443f43",
+                        "surface-container-lowest": "#181417",
+                        "surface-container-low": "#262225",
+                        "surface-container": "#2a2629",
+                        "surface-container-high": "#353034",
+                        "surface-container-highest": "#413b3f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "receipt-padding": "20px",
+                        "sm": "8px",
+                        "unit": "4px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "amount-sm": ["IBM Plex Mono"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Fraunces"],
+                        "amount-lg": ["IBM Plex Mono"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Fraunces"],
+                        "label-mono": ["IBM Plex Mono"],
+                        "display-lg-mobile": ["Fraunces"]
+                    },
+                    "fontSize": {
+                        "amount-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["40px", { "lineHeight": "48px", "fontWeight": "700" }],
+                        "amount-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-on-primary overflow-hidden">
+<!-- Main Canvas -->
+<main class="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+<!-- Background Accents (Atmospheric) -->
+<div class="absolute inset-0 ledger-line opacity-20 pointer-events-none"></div>
+<div class="absolute inset-0 paper-texture pointer-events-none"></div>
+<!-- Animated Backdrop (Soft berry glow) -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-full pointer-events-none"></div>
+<!-- Content Shell -->
+<div class="relative z-10 w-full max-w-md px-md flex flex-col items-center text-center">
+<!-- Logo Section -->
+<div class="mb-xl animate-float">
+<img alt="SplitFair Logo" class="w-24 h-24 object-contain shadow-2xl shadow-black/40 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpRUORDXGK9EOK0Mk-eibwIkinRb4jdwMROvqtqjkq8Mo1BJq9QgZ2QEXcNpLjaJajsTqjF1pSXYFsba06rr_9z_k7M73R2-V9mwQd_peEDorm0H7dgXsZMixEyy9I65fob2_Ze6kLJDVaP3jtWamMaFiIF1Ztt3zRW-hDpc_u4jPRC1JH_WCGdW4xgZczBXcKjD2TvgmGnW1Q6xG0bCPRlQVaOiNiVGgqVxAwqKHWNpddy3nFz-ZhMbtSkcdd2KWwr4kzujzr0Kv-"/>
+</div>
+<!-- Hero Text -->
+<div class="space-y-sm mb-xl">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-background tracking-tight">
+                    Settle up in a snap.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xs mx-auto">
+                    Instant UPI settling for groups, roommates, and friends. No awkward debt, just fair splits.
+                </p>
+</div>
+<!-- Interactive Login Form / CTA Area -->
+<div class="w-full space-y-md">
+<!-- Onboarding Card (Tactile Paper Metaphor) -->
+<div class="relative bg-[#F7F3EA] text-[#14181C] p-receipt-padding rounded-lg shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500 overflow-hidden group">
+<div class="absolute inset-0 paper-texture opacity-10"></div>
+<!-- Decorative Receipt Detail -->
+<div class="flex justify-between items-center mb-md border-b border-dashed border-[#14181C]/20 pb-sm">
+<span class="font-label-mono text-label-mono uppercase tracking-widest opacity-60">Session Start</span>
+<span class="font-amount-sm text-amount-sm">0001-SF</span>
+</div>
+<div class="space-y-lg py-sm relative z-10">
+<div class="flex flex-col gap-xs text-left">
+<label class="font-label-mono text-xs uppercase text-[#14181C]/60 px-unit">Phone Number</label>
+<input class="w-full bg-transparent border-b-2 border-[#14181C]/10 focus:border-primary focus:ring-0 text-xl font-amount-lg px-unit py-sm placeholder-[#14181C]/20 transition-colors" placeholder="+91 00000 00000" type="tel"/>
+</div>
+<!-- Primary CTA (Using Tertiary from the Berry palette for punch) -->
+<button class="w-full bg-tertiary text-on-tertiary font-bold py-md px-lg rounded-sm hover:brightness-110 active:scale-95 transition-all shadow-lg flex items-center justify-center gap-sm">
+<span class="font-body-md text-body-md">Get Started</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Perforated Bottom Edge Decorative -->
+<div class="absolute bottom-0 left-0 w-full h-2 bg-background perforated-edge translate-y-1"></div>
+</div>
+<!-- Secondary Actions -->
+<div class="flex flex-col gap-md mt-lg">
+<button class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center gap-unit">
+<span class="material-symbols-outlined text-sm">account_balance_wallet</span>
+<span>Link existing UPI account</span>
+</button>
+<div class="flex items-center gap-sm justify-center">
+<div class="h-[1px] w-8 bg-outline-variant/30"></div>
+<span class="font-label-mono text-[10px] uppercase text-on-surface-variant tracking-[0.2em]">Secure Ledger</span>
+<div class="h-[1px] w-8 bg-outline-variant/30"></div>
+</div>
+</div>
+</div>
+<!-- Footer Meta -->
+<footer class="mt-xl opacity-40 hover:opacity-100 transition-opacity">
+<p class="font-label-mono text-[11px] leading-relaxed uppercase tracking-widest">
+                    Encrypted transactions • NPCI Certified<br/>
+                    © 2024 SplitFair Digital Ledger
+                </p>
+</footer>
+</div>
+<!-- Floating Decorative Elements -->
+<div class="absolute bottom-10 right-10 opacity-10 md:opacity-20 pointer-events-none hidden md:block">
+<div class="text-[120px] font-amount-lg text-primary rotate-12 select-none">₹</div>
+</div>
+<div class="absolute top-20 left-10 opacity-10 md:opacity-20 pointer-events-none hidden md:block">
+<div class="text-[80px] font-amount-lg text-primary -rotate-12 select-none opacity-50">#FAIR</div>
+</div>
+</main>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.querySelector('input');
+            const card = document.querySelector('.bg-\\[\\#F7F3EA\\]');
+            
+            // Subtle card tilt on hover/focus
+            input.addEventListener('focus', () => {
+                card.style.transform = 'rotate(0deg) scale(1.02)';
+            });
+            
+            input.addEventListener('blur', () => {
+                card.style.transform = 'rotate(1deg) scale(1)';
+            });
+
+            // Button click ripple (simple version)
+            const btn = document.querySelector('button');
+            btn.addEventListener('click', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                let ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.style.width = '0px';
+                ripple.style.height = '0px';
+                ripple.style.background = 'rgba(255,255,255,0.3)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.transform = 'translate(-50%, -50%)';
+                ripple.style.transition = 'all 0.6s ease-out';
+                btn.appendChild(ripple);
+                
+                requestAnimationFrame(() => {
+                    ripple.style.width = '300px';
+                    ripple.style.height = '300px';
+                    ripple.style.opacity = '0';
+                });
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+</body></html>
