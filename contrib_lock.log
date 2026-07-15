@@ -1584,3 +1584,4 @@
 2026-07-15 12:12:17 - Add toSequenceExpression.js.map
 2026-07-15 13:08:44 - Add classPrivateFieldSet2.js
 2026-07-15 09:37:54 - Add beacon.js
+2026-07-15 11:30:03 - Add sourcemap-segment.d.ts
