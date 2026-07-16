@@ -1699,3 +1699,4 @@
 2026-07-16 14:12:39 - Add strip-filename.d.cts
 2026-07-16 17:31:58 - Add bigint.js
 2026-07-16 14:11:08 - Add expressions.js.map
+2026-07-16 18:38:41 - Add classExtractFieldDescriptor.js
