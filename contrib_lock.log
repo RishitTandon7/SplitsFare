@@ -1903,3 +1903,4 @@
 2026-07-18 17:16:01 - Add toConsumableArray.js
 2026-07-18 10:56:49 - Add index.js.map
 2026-07-18 13:50:40 - Add webauthn.dom.d.ts
+2026-07-18 10:43:38 - Add writeOnlyError.js
