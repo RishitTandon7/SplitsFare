@@ -1965,3 +1965,4 @@
 2026-07-19 20:10:04 - Add types.ts
 2026-07-19 08:04:32 - Add isType.js
 2026-07-19 16:37:31 - Add pattern-to-regex.js.map
+2026-07-19 18:14:53 - Add errors.d.ts
