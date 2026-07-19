@@ -1997,3 +1997,4 @@
 2026-07-19 19:59:38 - Add types.d.ts.map
 2026-07-19 16:42:56 - Add webauthn.dom.d.ts.map
 2026-07-19 12:31:38 - Add mask-composite.js
+2026-07-19 16:12:51 - Add objectWithoutProperties.js
