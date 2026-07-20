@@ -2039,3 +2039,4 @@
 2026-07-20 20:58:18 - Add socketAdapter.d.ts.map
 2026-07-20 15:58:05 - Add autoprefixer.ps1
 2026-07-20 09:40:13 - Add superPropGet.js
+2026-07-20 10:21:22 - Add isSpecifierDefault.js
